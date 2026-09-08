@@ -1,14 +1,14 @@
 {
-  "kids": 897,
-  "medium": 1000,
-  "hard": 799,
-  "insane": 673,
+  "kids": 1102,
+  "medium": 1041,
+  "hard": 792,
+  "insane": 884,
   "theme-bollywood": 0,
-  "theme-malayalam": 0,
+  "theme-malayalam": 240,
   "theme-celebs": 0,
-  "theme-places": 0,
-  "theme-desi": 120,
-  "theme-cricket": 0,
-  "theme-retro": 120,
+  "theme-places": 240,
+  "theme-desi": 249,
+  "theme-cricket": 240,
+  "theme-retro": 249,
   "theme-movies": 0
 }

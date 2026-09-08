@@ -197,9 +197,9 @@ export default function Turn({
     ? {
         transform:
           fly === "got"
-            ? `translate(${width.current + 240}px, -40px) rotate(18deg)`
+            ? `translate(130vw, -40px) rotate(18deg)`
             : fly === "skip"
-              ? `translate(-${width.current + 240}px, -40px) rotate(-18deg)`
+              ? `translate(-130vw, -40px) rotate(-18deg)`
               : `translate(0, 120vh) rotate(0)`,
         opacity: fly === "buzz" ? 1 : 0.6,
         transition: `transform ${FLY_MS}ms cubic-bezier(0.22, 1, 0.36, 1), opacity ${FLY_MS}ms`,

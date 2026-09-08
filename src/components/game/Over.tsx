@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { IconRefresh, IconTrophy } from "@/components/icons";
 import { TEAM_STYLE } from "@/lib/names";
 import { sfx } from "@/lib/sound";
@@ -21,24 +21,26 @@ export default function Over({
   const ranked = [...game.teams].sort((a, b) => b.score - a.score);
   const champ = ranked[0];
   const s = TEAM_STYLE[champ.color];
-  const bits = useMemo(
-    () =>
+  const [bits, setBits] = useState<{ left: number; delay: number; dur: number; color: string; w: number }[]>([]);
+
+  useEffect(() => {
+    setBits(
       Array.from({ length: 70 }, (_, i) => ({
         left: Math.random() * 100,
         delay: Math.random() * 1.8,
         dur: 2.6 + Math.random() * 2,
         color: CONFETTI[i % CONFETTI.length],
         w: 6 + Math.random() * 8,
-      })),
-    []
-  );
+      }))
+    );
+  }, []);
 
   useEffect(() => {
     sfx.win();
   }, []);
 
   return (
-    <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-4 pb-8 pt-6">
+    <main className="mx-auto flex w-full max-w-md flex-1 flex-col px-4 pb-8 pt-14">
       {bits.map((b, i) => (
         <span
           key={i}
