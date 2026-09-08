@@ -41,61 +41,13 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 /* Club Soda tokens, from src/app/globals.css. --lime and --amber are fill-only:
    text on them is always --on-lime, the same near-black in both themes.
    --go-deep and --buzz-deep are darkened in light until they clear 4.5:1. */
-:root{
---paper:#f7f6fb; --surface:#fff; --well:#edebf4;
---ink:#15121f; --muted:rgba(21,18,31,.62);
---grape:#5b3df5; --grape-bright:#7c5cff; --on-grape:#fff;
---lime:#c9f542; --on-lime:#15121f; --amber:#fbbf24;
---go:#15803d; --go-deep:#166534; --go-tint:#dcfce7;
---buzz:#e11d48; --buzz-deep:#be123c; --buzz-tint:#ffe4e8;
---hair:rgba(21,18,31,.07); --ring:0 0 0 1px var(--hair);
---glow-a:rgba(91,61,245,.13); --glow-b:rgba(201,245,66,.18);
---lift:0 1px 2px rgba(21,18,31,.04),0 14px 34px -18px rgba(40,24,90,.28);
---lift-sm:0 1px 2px rgba(21,18,31,.04),0 8px 20px -12px rgba(40,24,90,.24);
---lift-lg:0 2px 4px rgba(21,18,31,.04),0 24px 56px -24px rgba(40,24,90,.36);
---r-sm:12px; --r:16px; --r-lg:20px; --r-xl:26px;
---display:"Outfit","Geist",system-ui,sans-serif;
---body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
---mono:ui-monospace,SFMono-Regular,Menlo,"Cascadia Mono",monospace;
-color-scheme:light;
-}
-@media (prefers-color-scheme:dark){
-:root:not([data-theme="light"]){
---paper:#0e0c17; --surface:#191527; --well:#221d35;
---ink:#f3f1fb; --muted:rgba(243,241,251,.66);
---grape:#8b6bff; --grape-bright:#a48cff; --on-grape:#10091f;
---go:#4ade80; --go-deep:#4ade80; --go-tint:#12351f;
---buzz:#fb7185; --buzz-deep:#fb7185; --buzz-tint:#3a1420;
---hair:rgba(243,241,251,.1);
---glow-a:rgba(124,92,255,.2); --glow-b:rgba(201,245,66,.09);
---lift:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.8);
---lift-sm:0 1px 2px rgba(0,0,0,.45),0 8px 20px -12px rgba(0,0,0,.7);
---lift-lg:0 2px 4px rgba(0,0,0,.5),0 24px 56px -24px rgba(0,0,0,.9);
-color-scheme:dark;
-}}
-:root[data-theme="dark"]{
---paper:#0e0c17; --surface:#191527; --well:#221d35;
---ink:#f3f1fb; --muted:rgba(243,241,251,.66);
---grape:#8b6bff; --grape-bright:#a48cff; --on-grape:#10091f;
---go:#4ade80; --go-deep:#4ade80; --go-tint:#12351f;
---buzz:#fb7185; --buzz-deep:#fb7185; --buzz-tint:#3a1420;
---hair:rgba(243,241,251,.1);
---glow-a:rgba(124,92,255,.2); --glow-b:rgba(201,245,66,.09);
---lift:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.8);
---lift-sm:0 1px 2px rgba(0,0,0,.45),0 8px 20px -12px rgba(0,0,0,.7);
---lift-lg:0 2px 4px rgba(0,0,0,.5),0 24px 56px -24px rgba(0,0,0,.9);
-color-scheme:dark;
-}
-
+:root{--paper:#f7f6fb;--surface:#fff;--well:#edebf4;--ink:#15121f;--muted:rgba(21,18,31,.62);--grape:#5b3df5;--grape-bright:#7c5cff;--on-grape:#fff;--lime:#c9f542;--on-lime:#15121f;--amber:#fbbf24;--go:#15803d;--go-deep:#166534;--go-tint:#dcfce7;--buzz:#e11d48;--buzz-deep:#be123c;--buzz-tint:#ffe4e8;--hair:rgba(21,18,31,.07);--ring:0 0 0 1px var(--hair);--glow-a:rgba(91,61,245,.13);--glow-b:rgba(201,245,66,.18);--lift:0 1px 2px rgba(21,18,31,.04),0 14px 34px -18px rgba(40,24,90,.28);--lift-sm:0 1px 2px rgba(21,18,31,.04),0 8px 20px -12px rgba(40,24,90,.24);--lift-lg:0 2px 4px rgba(21,18,31,.04),0 24px 56px -24px rgba(40,24,90,.36);--r-sm:12px;--r:16px;--r-lg:20px;--r-xl:26px;--display:"Outfit","Geist",system-ui,sans-serif;--body:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,"Cascadia Mono",monospace;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0e0c17;--surface:#191527;--well:#221d35;--ink:#f3f1fb;--muted:rgba(243,241,251,.66);--grape:#8b6bff;--grape-bright:#a48cff;--on-grape:#10091f;--go:#4ade80;--go-deep:#4ade80;--go-tint:#12351f;--buzz:#fb7185;--buzz-deep:#fb7185;--buzz-tint:#3a1420;--hair:rgba(243,241,251,.1);--glow-a:rgba(124,92,255,.2);--glow-b:rgba(201,245,66,.09);--lift:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.8);--lift-sm:0 1px 2px rgba(0,0,0,.45),0 8px 20px -12px rgba(0,0,0,.7);--lift-lg:0 2px 4px rgba(0,0,0,.5),0 24px 56px -24px rgba(0,0,0,.9);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0e0c17;--surface:#191527;--well:#221d35;--ink:#f3f1fb;--muted:rgba(243,241,251,.66);--grape:#8b6bff;--grape-bright:#a48cff;--on-grape:#10091f;--go:#4ade80;--go-deep:#4ade80;--go-tint:#12351f;--buzz:#fb7185;--buzz-deep:#fb7185;--buzz-tint:#3a1420;--hair:rgba(243,241,251,.1);--glow-a:rgba(124,92,255,.2);--glow-b:rgba(201,245,66,.09);--lift:0 1px 2px rgba(0,0,0,.5),0 14px 34px -18px rgba(0,0,0,.8);--lift-sm:0 1px 2px rgba(0,0,0,.45),0 8px 20px -12px rgba(0,0,0,.7);--lift-lg:0 2px 4px rgba(0,0,0,.5),0 24px 56px -24px rgba(0,0,0,.9);color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);
-font-family:var(--body);font-size:16px;line-height:1.62;
--webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-background:
-radial-gradient(760px 560px at 50% -14%,var(--glow-a),transparent 70%),
-radial-gradient(680px 520px at 110% 106%,var(--glow-b),transparent 70%)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(760px 560px at 50% -14%,var(--glow-a),transparent 70%),radial-gradient(680px 520px at 110% 106%,var(--glow-b),transparent 70%)}
 img,svg{display:block;max-width:100%}
 a{color:var(--grape)}
 h1,h2,h3{margin:0;font-family:var(--display);font-weight:800;line-height:1.1;letter-spacing:-.022em}
@@ -103,65 +55,47 @@ p,ul,ol{margin:0}
 :focus-visible{outline:2px solid var(--grape);outline-offset:3px;border-radius:6px}
 ::selection{background:var(--grape);color:var(--on-grape)}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.skip{position:absolute;left:-9999px;top:0;z-index:9;background:var(--grape);color:var(--on-grape);
-padding:13px 20px;border-radius:0 0 var(--r) 0;font-weight:700;text-decoration:none}
+.skip{position:absolute;left:-9999px;top:0;z-index:9;background:var(--grape);color:var(--on-grape);padding:13px 20px;border-radius:0 0 var(--r) 0;font-weight:700;text-decoration:none}
 .skip:focus{left:0}
-
 .wrap{max-width:860px;margin:0 auto;padding:0 22px 88px}
-
-/* ---- wordmark: TIPSY in ink, TABOO in grape, last O a "no" sign ---- */
-.wm{font-family:var(--display);font-weight:800;letter-spacing:-.03em;
-display:inline-flex;align-items:center;gap:.28em;white-space:nowrap;text-decoration:none}
+/* wordmark: TIPSY in ink, TABOO in grape, the last O a "no" sign */
+.wm{font-family:var(--display);font-weight:800;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:.28em;white-space:nowrap;text-decoration:none}
 .wm b{color:var(--ink)}
 .wm i{font-style:normal;color:var(--grape);display:inline-flex;align-items:center}
-.wm .no{width:.84em;height:.84em;margin-left:.01em;position:relative;top:.035em;
-fill:none;stroke:currentColor;stroke-width:2.9;flex:none}
-
-/* ---- appearance switch ---- */
+.wm .no{width:.84em;height:.84em;margin-left:.01em;position:relative;top:.035em;fill:none;stroke:currentColor;stroke-width:2.9;flex:none}
+/* light / auto / dark switch */
 .topbar{display:flex;justify-content:flex-end;padding-top:18px}
-.theme{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:999px;
-background:var(--surface);box-shadow:var(--ring),var(--lift-sm)}
-.theme button{width:30px;height:30px;display:grid;place-items:center;border:0;padding:0;
-border-radius:999px;background:none;color:var(--muted);cursor:pointer;
-transition:background .16s ease,color .16s ease}
-.theme button svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;
-stroke-linecap:round;stroke-linejoin:round}
+.theme{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:999px;background:var(--surface);box-shadow:var(--ring),var(--lift-sm)}
+.theme button{width:30px;height:30px;display:grid;place-items:center;border:0;padding:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer;transition:background .16s ease,color .16s ease}
+.theme button svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .theme button:hover{color:var(--ink)}
 .theme button[aria-pressed="true"]{background:var(--grape);color:var(--on-grape)}
-
 header{text-align:center;padding:34px 0 8px}
 header .logo{margin:0 auto;width:76px;height:76px;border-radius:20px}
 h1{margin:18px 0 0;font-size:clamp(34px,9vw,58px)}
 h1 .wm{font-size:1em}
 .tag{margin-top:12px;color:var(--muted);font-size:18px}
 .cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;
-font-size:15px;padding:13px 21px;border-radius:var(--r);text-decoration:none;
-transition:transform .12s ease,box-shadow .12s ease,background .16s ease}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:15px;padding:13px 21px;border-radius:var(--r);text-decoration:none;transition:transform .12s ease,box-shadow .12s ease,background .16s ease}
 .btn:hover{transform:translateY(-2px)}
 .btn.play{background:var(--grape);color:var(--on-grape);box-shadow:var(--lift)}
 .btn.play:hover{background:var(--grape-bright);box-shadow:var(--lift-lg)}
 .btn.ghost{background:var(--surface);color:var(--ink);box-shadow:var(--ring),var(--lift-sm)}
 .btn.ghost:hover{box-shadow:var(--ring),var(--lift)}
-
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--go-deep)}
 h2{margin:60px 0 0;font-size:clamp(25px,4.6vw,32px)}
 .lead{margin-top:12px;color:var(--muted);max-width:62ch}
 .body p{margin-top:14px;font-size:16.5px}
-
-/* ---- the card ---- */
-.demo{background:var(--surface);border-radius:var(--r-lg);padding:26px 24px;
-box-shadow:var(--ring),var(--lift);max-width:330px;margin:26px auto 0}
+/* the card */
+.demo{background:var(--surface);border-radius:var(--r-lg);padding:26px 24px;box-shadow:var(--ring),var(--lift);max-width:330px;margin:26px auto 0}
 .demo .kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
 .demo .word{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.03em;text-align:center;margin-top:8px}
 .demo ul{margin-top:18px;padding:0;list-style:none;display:grid;gap:7px}
 .demo li{background:var(--buzz-tint);color:var(--ink);border-radius:var(--r-sm);padding:9px 14px;font-weight:600;font-size:15px;text-align:center}
 .demo .foot{margin-top:16px;font-size:13px;color:var(--muted);text-align:center}
-
-/* ---- the two actions ---- */
+/* the two actions */
 .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:26px}
-.leg{background:var(--surface);border-radius:var(--r-lg);padding:20px;
-box-shadow:var(--ring),var(--lift-sm);text-align:center}
+.leg{background:var(--surface);border-radius:var(--r-lg);padding:20px;box-shadow:var(--ring),var(--lift-sm);text-align:center}
 .leg .ic{width:44px;height:44px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center}
 .leg .ic svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
 .leg.got .ic{background:var(--go-tint);color:var(--go-deep)}
@@ -169,22 +103,15 @@ box-shadow:var(--ring),var(--lift-sm);text-align:center}
 .leg.cost .ic{background:var(--buzz-tint);color:var(--buzz-deep)}
 .leg b{display:block;font-family:var(--display);font-size:17px}
 .leg p{margin-top:6px;font-size:14px;color:var(--muted)}
-.leg .pts{display:inline-block;margin-top:10px;font-weight:700;font-size:13px;padding:4px 11px;
-border-radius:999px;background:var(--well);color:var(--ink)}
-.leg.cost .pts{background:var(--buzz-tint);color:var(--buzz-deep)}
+.leg .pts{display:inline-block;margin-top:10px;font-weight:700;font-size:13px;padding:4px 11px;border-radius:999px;background:var(--well);color:var(--ink)}
 .leg.got .pts{background:var(--go-tint);color:var(--go-deep)}
-
-/* ---- numbered steps ---- */
+.leg.cost .pts{background:var(--buzz-tint);color:var(--buzz-deep)}
+/* numbered steps */
 ol.steps{margin-top:22px;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:12px}
-ol.steps li{counter-increment:s;background:var(--surface);border-radius:var(--r-lg);
-padding:18px 20px 18px 60px;position:relative;box-shadow:var(--ring),var(--lift-sm);
-font-size:15.5px;color:var(--muted)}
-ol.steps li::before{content:counter(s);position:absolute;left:18px;top:17px;width:28px;height:28px;
-border-radius:50%;background:var(--lime);color:var(--on-lime);font-family:var(--display);
-font-weight:700;font-size:14px;display:grid;place-items:center}
+ol.steps li{counter-increment:s;background:var(--surface);border-radius:var(--r-lg);padding:18px 20px 18px 60px;position:relative;box-shadow:var(--ring),var(--lift-sm);font-size:15.5px;color:var(--muted)}
+ol.steps li::before{content:counter(s);position:absolute;left:18px;top:17px;width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);font-family:var(--display);font-weight:700;font-size:14px;display:grid;place-items:center}
 ol.steps b{color:var(--ink)}
-
-/* ---- rules table ---- */
+/* rules table */
 .tablewrap{margin-top:24px;overflow-x:auto;border-radius:var(--r-lg);box-shadow:var(--ring),var(--lift-sm)}
 table{width:100%;min-width:480px;border-collapse:collapse;background:var(--surface);font-size:15px}
 th,td{text-align:left;padding:13px 18px;border-bottom:1px solid var(--hair)}
@@ -193,28 +120,21 @@ th{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase
 td:first-child{font-weight:700;white-space:nowrap}
 .g{color:var(--go-deep);font-weight:700}
 .r{color:var(--buzz-deep);font-weight:700}
-
-/* ---- chips ---- */
+/* chips */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:0;list-style:none}
-.chips li{background:var(--surface);border-radius:999px;padding:8px 15px;font-size:14px;
-font-weight:600;box-shadow:var(--ring),var(--lift-sm)}
+.chips li{background:var(--surface);border-radius:999px;padding:8px 15px;font-size:14px;font-weight:600;box-shadow:var(--ring),var(--lift-sm)}
 .chips li.mix{background:var(--amber);color:var(--on-lime);box-shadow:var(--lift-sm)}
 .chips li.hot{background:var(--lime);color:var(--on-lime);box-shadow:var(--lift-sm)}
-
-/* ---- quiet panel ---- */
-.quiet{margin-top:24px;background:var(--well);border-radius:var(--r-xl);padding:24px;
-font-size:15.5px;color:var(--muted)}
+/* quiet panel */
+.quiet{margin-top:24px;background:var(--well);border-radius:var(--r-xl);padding:24px;font-size:15.5px;color:var(--muted)}
 .quiet b{color:var(--ink)}
 .quiet p+p{margin-top:12px}
 code{font-family:var(--mono);font-size:.9em;background:var(--well);border-radius:6px;padding:2px 6px}
 .quiet code{background:var(--surface)}
-
-footer{margin-top:66px;padding-top:26px;border-top:1px solid var(--hair);text-align:center;
-font-size:13.5px;color:var(--muted)}
+footer{margin-top:66px;padding-top:26px;border-top:1px solid var(--hair);text-align:center;font-size:13.5px;color:var(--muted)}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--ink)}
 footer .foot-cta{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:20px}
-
 @media (max-width:520px){header{padding-top:22px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}.btn:hover{transform:none}}
 </style>
@@ -222,179 +142,162 @@ footer .foot-cta{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;marg
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
-
 <div class="topbar">
-  <div class="theme" role="group" aria-label="Appearance">
-    <button type="button" data-theme-set="light" aria-pressed="false" title="Light">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
-      <span class="sr">Light appearance</span></button>
-    <button type="button" data-theme-set="auto" aria-pressed="true" title="Auto">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 3.6v16.8"/><path d="M12 3.6a8.4 8.4 0 0 1 0 16.8" fill="currentColor" stroke="none"/></svg>
-      <span class="sr">Match my device</span></button>
-    <button type="button" data-theme-set="dark" aria-pressed="false" title="Dark">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/></svg>
-      <span class="sr">Dark appearance</span></button>
-  </div>
+<div class="theme" role="group" aria-label="Appearance">
+<button type="button" data-theme-set="light" aria-pressed="false" title="Light">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+<span class="sr">Light appearance</span></button>
+<button type="button" data-theme-set="auto" aria-pressed="true" title="Auto">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 3.6v16.8"/><path d="M12 3.6a8.4 8.4 0 0 1 0 16.8" fill="currentColor" stroke="none"/></svg>
+<span class="sr">Match my device</span></button>
+<button type="button" data-theme-set="dark" aria-pressed="false" title="Dark">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/></svg>
+<span class="sr">Dark appearance</span></button>
 </div>
-
+</div>
 <header>
-  <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="The Tipsy Taboo app icon: a speech bubble with the word redacted out of it">
-    <defs><linearGradient id="am" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#4c2ee0"/></linearGradient></defs>
-    <rect width="100" height="100" rx="26" fill="url(#am)"/>
-    <path d="M24 34c0-5 4-9 9-9h34c5 0 9 4 9 9v22c0 5-4 9-9 9H49L33 78V65c-5 0-9-4-9-9V34Z" fill="#fff"/>
-    <rect x="33" y="35.5" width="34" height="8.5" rx="4.25" fill="#15121f"/>
-    <rect x="33" y="49" width="21" height="8.5" rx="4.25" fill="#15121f"/>
-    <rect x="58" y="49" width="9" height="8.5" rx="4.25" fill="#c9f542"/>
-  </svg>
-  <h1>
-    <span class="sr">Tipsy Taboo</span>
-    <span class="wm" aria-hidden="true"><b>TIPSY</b><i>TABO<svg class="no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.4"/><path d="M5.4 5.4 18.6 18.6"/></svg></i></span>
-  </h1>
-  <p class="tag">Say anything. Except that.</p>
-  <div class="cta">
-    <a class="btn play" href="/">Play now &rarr;</a>
-    <a class="btn ghost" href="https://github.com/kbrovibes/tipsy-taboo" rel="noopener">Source on GitHub</a>
-  </div>
+<svg class="logo" viewBox="0 0 100 100" role="img" aria-label="The Tipsy Taboo app icon: a speech bubble with the word redacted out of it">
+<defs><linearGradient id="am" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#4c2ee0"/></linearGradient></defs>
+<rect width="100" height="100" rx="26" fill="url(#am)"/>
+<path d="M24 34c0-5 4-9 9-9h34c5 0 9 4 9 9v22c0 5-4 9-9 9H49L33 78V65c-5 0-9-4-9-9V34Z" fill="#fff"/>
+<rect x="33" y="35.5" width="34" height="8.5" rx="4.25" fill="#15121f"/>
+<rect x="33" y="49" width="21" height="8.5" rx="4.25" fill="#15121f"/>
+<rect x="58" y="49" width="9" height="8.5" rx="4.25" fill="#c9f542"/>
+</svg>
+<h1>
+<span class="sr">Tipsy Taboo</span>
+<span class="wm" aria-hidden="true"><b>TIPSY</b><i>TABO<svg class="no" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.4"/><path d="M5.4 5.4 18.6 18.6"/></svg></i></span>
+</h1>
+<p class="tag">Say anything. Except that.</p>
+<div class="cta">
+<a class="btn play" href="/">Play now &rarr;</a>
+<a class="btn ghost" href="https://github.com/kbrovibes/tipsy-taboo" rel="noopener">Source on GitHub</a>
+</div>
 </header>
-
 <main id="main">
-
 <p class="eyebrow" style="margin-top:56px">What it is</p>
 <h2 style="margin-top:10px">A deck of Taboo cards, minus the box</h2>
 <div class="body">
-  <p class="lead">One phone goes round the table. Two to four teams. Each turn, one person has sixty seconds to get their team to say the word on the card &mdash; without saying any of the five words printed under it.</p>
-  <p>That is the whole game, and the five banned words are the whole difficulty. They are not five words that happen to be related; they are the five a person actually reaches for first. Which leaves you describing an elephant without trunk, grey, tusk, Africa or big.</p>
+<p class="lead">One phone goes round the table. Two to four teams. Each turn, one person has sixty seconds to get their team to say the word on the card &mdash; without saying any of the five words printed under it.</p>
+<p>That is the whole game, and the five banned words are the whole difficulty. They are not five words that happen to be related; they are the five a person actually reaches for first. Which leaves you describing an elephant without trunk, grey, tusk, Africa or big.</p>
 </div>
-
 <div class="demo">
-  <p class="kicker">Get them to say</p>
-  <p class="word">Elephant</p>
-  <ul><li>Trunk</li><li>Grey</li><li>Tusk</li><li>Africa</li><li>Big</li></ul>
-  <p class="foot">Now describe it. That is the game.</p>
+<p class="kicker">Get them to say</p>
+<p class="word">Elephant</p>
+<ul><li>Trunk</li><li>Grey</li><li>Tusk</li><li>Africa</li><li>Big</li></ul>
+<p class="foot">Now describe it. That is the game.</p>
 </div>
-
 <h2>Two things you can do with a card</h2>
 <div class="body">
-  <p class="lead">They said it, or they didn&rsquo;t. There is no third button: being stuck and letting a taboo word slip out are the same moment at the table, so they are the same action.</p>
+<p class="lead">They said it, or they didn&rsquo;t. There is no third button: being stuck and letting a taboo word slip out are the same moment at the table, so they are the same action.</p>
 </div>
-
 <div class="legend">
-  <div class="leg got">
-    <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 6.8"/></svg></div>
-    <b>Swipe right</b><p>They said the word. Or hit the green button.</p><span class="pts">+1</span>
-  </div>
-  <div class="leg pass">
-    <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 6l6 6-6 6M5 6l6 6-6 6"/></svg></div>
-    <b>Swipe left &mdash; pass</b><p>Stuck, or a banned word slipped out. The card is dead either way. Neutral while free passes remain: <b>Pass &middot; 3 free</b>.</p><span class="pts">0</span>
-  </div>
-  <div class="leg cost">
-    <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></div>
-    <b>Pass, allowance spent</b><p>The same button turns red and reads <b>Pass &middot; &minus;1</b>. Every further pass costs a point.</p><span class="pts">&minus;1</span>
-  </div>
+<div class="leg got">
+<div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 6.8"/></svg></div>
+<b>Swipe right</b><p>They said the word. Or hit the green button.</p><span class="pts">+1</span>
 </div>
-
+<div class="leg pass">
+<div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 6l6 6-6 6M5 6l6 6-6 6"/></svg></div>
+<b>Swipe left &mdash; pass</b><p>Stuck, or a banned word slipped out. The card is dead either way. Neutral while free passes remain: <b>Pass &middot; 3 free</b>.</p><span class="pts">0</span>
+</div>
+<div class="leg cost">
+<div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></div>
+<b>Pass, allowance spent</b><p>The same button turns red and reads <b>Pass &middot; &minus;1</b>. Every further pass costs a point.</p><span class="pts">&minus;1</span>
+</div>
+</div>
 <h2>How a turn works</h2>
 <p class="lead">The phone is the deck, the clock, the scoreboard and the buzzer. Nobody needs a pencil.</p>
 <ol class="steps">
-  <li><b>Pass the phone to the clue-giver.</b> Between turns the screen only says whose go it is, so the next card never leaks across the table.</li>
-  <li><b>They tap start.</b> Three, two, one, and the first card appears with the clock running.</li>
-  <li><b>Swipe right when the team shouts it, left to pass.</b> The other team listens for one of the five &mdash; if they hear one, the card is passed like any other.</li>
-  <li><b>Check the recap.</b> Every card of the turn is listed with what it scored, a &minus;1 badge on the passes that cost. Tap any one to flip it &mdash; a panicked mis-swipe costs nothing if you catch it here.</li>
-  <li><b>Bank the points and hand it on.</b> Every team plays once per round. A tie at the end adds one more round.</li>
+<li><b>Pass the phone to the clue-giver.</b> Between turns the screen only says whose go it is, so the next card never leaks across the table.</li>
+<li><b>They tap start.</b> Three, two, one, and the first card appears with the clock running.</li>
+<li><b>Swipe right when the team shouts it, left to pass.</b> The other team listens for one of the five &mdash; if they hear one, the card is passed like any other.</li>
+<li><b>Check the recap.</b> Every card of the turn is listed with what it scored, a &minus;1 badge on the passes that cost. Tap any one to flip it &mdash; a panicked mis-swipe costs nothing if you catch it here.</li>
+<li><b>Bank the points and hand it on.</b> Every team plays once per round. A tie at the end adds one more round.</li>
 </ol>
-
 <h2>House rules</h2>
 <p class="lead">Set before the first turn, changeable between games.</p>
 <div class="tablewrap">
-  <table>
-    <thead><tr><th scope="col">Thing</th><th scope="col">How it works</th></tr></thead>
-    <tbody>
-      <tr><td>Teams</td><td>Two to four, each playing exactly once per round.</td></tr>
-      <tr><td>Turn length</td><td>60, 90 or 120 seconds.</td></tr>
-      <tr><td>Rounds</td><td>3, 5, 8, or endless &mdash; endless runs until somebody calls it.</td></tr>
-      <tr><td>Scoring</td><td><span class="g">Got it +1</span> &middot; <span class="g">free pass 0</span> &middot; <span class="r">pass past your allowance &minus;1</span>.</td></tr>
-      <tr><td>Free passes</td><td>None, three a turn, or unlimited. Three is the default. After that, every pass is &minus;1.</td></tr>
-      <tr><td>Taboo words</td><td>All five, in any form &mdash; if &ldquo;Swim&rdquo; is banned, so is &ldquo;swimming&rdquo;. Called out, the card is simply passed.</td></tr>
-      <tr><td>Ties</td><td>A tie after the last round adds one more round. Repeat as needed.</td></tr>
-      <tr><td>Appearance</td><td>Light, dark or auto. Auto is the default and follows your phone.</td></tr>
-    </tbody>
-  </table>
+<table>
+<thead><tr><th scope="col">Thing</th><th scope="col">How it works</th></tr></thead>
+<tbody>
+<tr><td>Teams</td><td>Two to four, each playing exactly once per round.</td></tr>
+<tr><td>Turn length</td><td>60, 90 or 120 seconds.</td></tr>
+<tr><td>Rounds</td><td>3, 5, 8, or endless &mdash; endless runs until somebody calls it.</td></tr>
+<tr><td>Scoring</td><td><span class="g">Got it +1</span> &middot; <span class="g">free pass 0</span> &middot; <span class="r">pass past your allowance &minus;1</span>.</td></tr>
+<tr><td>Free passes</td><td>None, three a turn, or unlimited. Three is the default. After that, every pass is &minus;1.</td></tr>
+<tr><td>Taboo words</td><td>All five, in any form &mdash; if &ldquo;Swim&rdquo; is banned, so is &ldquo;swimming&rdquo;. Called out, the card is simply passed.</td></tr>
+<tr><td>Ties</td><td>A tie after the last round adds one more round. Repeat as needed.</td></tr>
+<tr><td>Appearance</td><td>Light, dark or auto. Auto is the default and follows your phone.</td></tr>
+</tbody>
+</table>
 </div>
-
 <h2>The referee link</h2>
 <div class="body">
-  <p class="lead">Optional, and the single best reason to have a second phone at the table.</p>
-  <p>Open the menu during a game and you get a four-letter code and a QR. On another phone, open <code>/watch</code>, type the four letters or scan the code, and that phone becomes the other team&rsquo;s referee: the live card, the clock, the scores, and one enormous <b>TABOO!</b> button. Pressing it passes the current card on the game phone &mdash; the same single action, just from the other end of the table.</p>
-  <p>It is a broadcast channel and nothing more. No game is created, no code is registered, nothing is written to a database at either end &mdash; when the game ends, the code stops meaning anything. If the feature is not configured on the deployment, the app simply does not offer it and the game plays exactly as before.</p>
+<p class="lead">Optional, and the single best reason to have a second phone at the table.</p>
+<p>Open the menu during a game and you get a four-letter code and a QR. On another phone, open <code>/watch</code>, type the four letters or scan the code, and that phone becomes the other team&rsquo;s referee: the live card, the clock, the scores, and one enormous <b>TABOO!</b> button. Pressing it passes the current card on the game phone &mdash; the same single action, just from the other end of the table.</p>
+<p>It is a broadcast channel and nothing more. No game is created, no code is registered, nothing is written to a database at either end &mdash; when the game ends, the code stops meaning anything. If the feature is not configured on the deployment, the app simply does not offer it and the game plays exactly as before.</p>
 </div>
-
 <h2>The cards</h2>
 <div class="body">
-  <p class="lead"><b>6,280 cards</b> across four difficulty levels and eight themed packs, written in parallel by Claude sub-agents against a spec in <code>data/SPEC.md</code>, then put through a validator in <code>scripts/build-decks.mjs</code> that rejects anything breaking it.</p>
+<p class="lead"><b>6,280 cards</b> across four difficulty levels and eight themed packs, written in parallel by Claude sub-agents against a spec in <code>data/SPEC.md</code>, then put through a validator in <code>scripts/build-decks.mjs</code> that rejects anything breaking it.</p>
 </div>
 <ul class="chips">
-  <li>🧸 Kids &mdash; 1,102</li><li>🍹 Medium &mdash; 1,041</li>
-  <li class="hot">🌶️ Hard &mdash; 1,021, the most-played level</li><li>💀 Insane &mdash; 1,072</li>
+<li>🧸 Kids &mdash; 1,102</li><li>🍹 Medium &mdash; 1,041</li>
+<li class="hot">🌶️ Hard &mdash; 1,021, the most-played level</li><li>💀 Insane &mdash; 1,072</li>
 </ul>
 <ul class="chips">
-  <li>🎬 Bollywood</li><li>🥥 Malayalam Movies</li><li>⭐ Famous Indians</li><li>🛕 Places in India</li>
-  <li>🫖 Desi Life</li><li>🏏 Cricket</li><li>📺 90s India</li><li>🍿 Movies (world)</li>
-  <li class="mix">🎲 The Big Mix</li>
+<li>🎬 Bollywood</li><li>🥥 Malayalam Movies</li><li>⭐ Famous Indians</li><li>🛕 Places in India</li>
+<li>🫖 Desi Life</li><li>🏏 Cricket</li><li>📺 90s India</li><li>🍿 Movies (world)</li>
+<li class="mix">🎲 The Big Mix</li>
 </ul>
 <div class="body">
-  <p>The eight themed packs hold 2,044 cards between them, 240 to 346 each, and all play at medium difficulty.</p>
-  <p>A ban may never contain the target, any word of it, or a four-letter stem of it, so &ldquo;Swimming&rdquo; can never ban &ldquo;Swimmer&rdquo;. No target repeats inside a deck, and a word that landed in two decks stays in the easier one. Every deck is family-friendly; Kids is stricter again.</p>
-  <p>Each deck is dealt like a real one &mdash; shuffled, then drawn front to back. Your phone remembers which cards it has already played, per deck and across games, so a second round tonight cannot hand you the same word twice.</p>
+<p>The eight themed packs hold 2,044 cards between them, 240 to 346 each, and all play at medium difficulty.</p>
+<p>A ban may never contain the target, any word of it, or a four-letter stem of it, so &ldquo;Swimming&rdquo; can never ban &ldquo;Swimmer&rdquo;. No target repeats inside a deck, and a word that landed in two decks stays in the easier one. Every deck is family-friendly; Kids is stricter again.</p>
+<p>Each deck is dealt like a real one &mdash; shuffled, then drawn front to back. Your phone remembers which cards it has already played, per deck and across games, so a second round tonight cannot hand you the same word twice.</p>
 </div>
-
 <h2>Privacy</h2>
 <div class="quiet">
-  <p><b>Nothing leaves your phone.</b> Team names, scores, house rules, your appearance choice and the record of which cards this phone has played all live in your browser&rsquo;s own <code>localStorage</code>. They are never uploaded, never backed up and never seen by anyone else. Clearing your browser data deletes the lot.</p>
-  <p><b>The referee link is the one exception</b>, and only while you are using it: the game phone broadcasts the current card and scores over a Supabase Realtime channel, and the referee phone sends a TABOO! back. Nothing on that channel is stored at either end.</p>
-  <p><b>No accounts, no ads, no analytics.</b> There is no sign-up, no tracking script, no cookie banner, because there are no cookies to warn you about. The whole game is a static site that works with the aeroplane mode on.</p>
+<p><b>Nothing leaves your phone.</b> Team names, scores, house rules, your appearance choice and the record of which cards this phone has played all live in your browser&rsquo;s own <code>localStorage</code>. They are never uploaded, never backed up and never seen by anyone else. Clearing your browser data deletes the lot.</p>
+<p><b>The referee link is the one exception</b>, and only while you are using it: the game phone broadcasts the current card and scores over a Supabase Realtime channel, and the referee phone sends a TABOO! back. Nothing on that channel is stored at either end.</p>
+<p><b>No accounts, no ads, no analytics.</b> There is no sign-up, no tracking script, no cookie banner, because there are no cookies to warn you about. The whole game is a static site that works with the aeroplane mode on.</p>
 </div>
-
 </main>
-
 <footer>
-  <div class="foot-cta">
-    <a class="btn play" href="/">Play now &rarr;</a>
-    <a class="btn ghost" href="https://kbrovibes.github.io/tipsy-taboo/">Full site</a>
-    <a class="btn ghost" href="https://github.com/kbrovibes/tipsy-taboo" rel="noopener">Source</a>
-  </div>
-  Built by <a href="https://karthikrajan.info" rel="noopener">Karthik Rajan</a> &middot;
-  <a href="https://kbrovibes.github.io/">all projects</a><br>
-  Say anything. Except that.
-</footer>
-
+<div class="foot-cta">
+<a class="btn play" href="/">Play now &rarr;</a>
+<a class="btn ghost" href="https://kbrovibes.github.io/tipsy-taboo/">Full site</a>
+<a class="btn ghost" href="https://github.com/kbrovibes/tipsy-taboo" rel="noopener">Source</a>
 </div>
-
+Built by <a href="https://karthikrajan.info" rel="noopener">Karthik Rajan</a> &middot;
+<a href="https://kbrovibes.github.io/">all projects</a><br>
+Say anything. Except that.
+</footer>
+</div>
 <script>
-(function () {
-  "use strict";
-  var KEY = "tt-theme";
-  var btns = Array.prototype.slice.call(document.querySelectorAll("[data-theme-set]"));
-  function stored() {
-    try { var v = localStorage.getItem(KEY); return v === "light" || v === "dark" ? v : "auto"; }
-    catch (e) { return "auto"; }
-  }
-  function apply(mode) {
-    if (mode === "light" || mode === "dark") document.documentElement.setAttribute("data-theme", mode);
-    else document.documentElement.removeAttribute("data-theme");
-    btns.forEach(function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-theme-set") === mode ? "true" : "false");
-    });
-  }
-  btns.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var mode = b.getAttribute("data-theme-set");
-      try { if (mode === "auto") localStorage.removeItem(KEY); else localStorage.setItem(KEY, mode); }
-      catch (e) {}
-      apply(mode);
-    });
-  });
-  apply(stored());
+(function(){"use strict";
+var KEY = "tt-theme";
+var btns = Array.prototype.slice.call(document.querySelectorAll("[data-theme-set]"));
+function stored() {
+try { var v = localStorage.getItem(KEY); return v === "light" || v === "dark" ? v : "auto"; }
+catch (e) { return "auto"; }
+}
+function apply(mode) {
+if (mode === "light" || mode === "dark") document.documentElement.setAttribute("data-theme", mode);
+else document.documentElement.removeAttribute("data-theme");
+btns.forEach(function (b) {
+b.setAttribute("aria-pressed", b.getAttribute("data-theme-set") === mode ? "true" : "false");
+});
+}
+btns.forEach(function (b) {
+b.addEventListener("click", function () {
+var mode = b.getAttribute("data-theme-set");
+try { if (mode === "auto") localStorage.removeItem(KEY); else localStorage.setItem(KEY, mode); }
+catch (e) {}
+apply(mode);
+});
+});
+apply(stored());
 })();
 </script>
 </body>
