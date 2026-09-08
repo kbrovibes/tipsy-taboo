@@ -1,6 +1,6 @@
 "use client";
 
-import { IconCheck, IconGear, IconHand, IconLogo, IconPlay, IconX } from "@/components/icons";
+import { IconCheck, IconGear, IconLogo, IconPass, IconPlay } from "@/components/icons";
 import { deckInfo } from "@/lib/decks";
 import { TEAM_STYLE } from "@/lib/names";
 import type { Game } from "@/lib/types";
@@ -50,32 +50,44 @@ export default function Handoff({
         <p className="text-sm font-bold uppercase tracking-wider" style={{ color: s.deep }}>
           Pass the phone to
         </p>
-        <h2 className="mt-2 font-display font-extrabold leading-tight" style={{ fontSize: "clamp(2rem, 9vw, 2.8rem)", color: s.deep }}>
+        <h2
+          className="mt-2 font-display font-extrabold leading-tight"
+          style={{ fontSize: "clamp(2rem, 9vw, 2.8rem)", color: s.deep }}
+        >
           {team.name}
         </h2>
         <p className="mt-4 max-w-xs text-sm text-ink/70">
-          Pick a clue-giver. Their team shouts guesses; the other team watches the card and buzzes.
+          Pick a clue-giver. Their team shouts guesses; the other team watches the card and calls out banned words.
         </p>
 
         {firstEver && (
           <ul className="mt-5 w-full max-w-xs space-y-2 text-left text-sm">
             <li className="flex items-center gap-3 rounded-xl bg-white/80 px-3 py-2">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-go-tint text-go"><IconCheck size={18} /></span>
-              <span><b>Swipe right</b> when they get it</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-go-tint text-go">
+                <IconCheck size={18} />
+              </span>
+              <span>
+                <b>Swipe right</b> when they get it (+1)
+              </span>
             </li>
             <li className="flex items-center gap-3 rounded-xl bg-white/80 px-3 py-2">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-fizz text-ink"><IconX size={18} /></span>
-              <span><b>Swipe left</b> to skip{skipLimit !== null ? ` (${skipLimit} per turn)` : ""}</span>
-            </li>
-            <li className="flex items-center gap-3 rounded-xl bg-white/80 px-3 py-2">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-buzz-tint text-buzz"><IconHand size={18} /></span>
-              <span><b>Tap the hand</b> if a taboo word slips out (−1)</span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-buzz-tint text-buzz">
+                <IconPass size={18} />
+              </span>
+              <span>
+                <b>Swipe left</b> to pass — stuck, or a banned word slipped out.{" "}
+                {skipLimit === null
+                  ? "Always free."
+                  : skipLimit === 0
+                  ? "Each one costs a point."
+                  : `${skipLimit} free per turn, then −1 each.`}
+              </span>
             </li>
           </ul>
         )}
       </section>
 
-      <button onClick={onReady} className="btn-primary mt-5 w-full text-xl" style={{ background: s.color }}>
+      <button onClick={onReady} className="btn-primary mt-5 w-full text-xl" style={{ background: s.color, color: "#fff" }}>
         Start the clock <IconPlay size={22} />
       </button>
       <p className="mt-2 text-center text-xs text-ink/50">

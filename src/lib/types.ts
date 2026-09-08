@@ -8,9 +8,14 @@ export interface Card {
   t: string[];
 }
 
-export type Outcome = "got" | "skip" | "buzz";
+/**
+ * Two ways off the screen. A pass covers both "we give up" and "a taboo word
+ * slipped out" — the first few passes in a turn are free, the rest cost a
+ * point, and the house rule decides how many are free.
+ */
+export type Outcome = "got" | "pass";
 
-export type TeamColor = "berry" | "ocean" | "lime" | "tangerine";
+export type TeamColor = "grape" | "teal" | "amber" | "pink";
 
 export interface Team {
   id: number;
@@ -26,7 +31,7 @@ export interface Settings {
   turnSeconds: number;
   /** null = play until somebody ends the game */
   rounds: number | null;
-  /** null = unlimited skips */
+  /** free passes per turn; null = every pass is free */
   skipLimit: number | null;
 }
 
@@ -80,5 +85,6 @@ export interface Snapshot {
   card: Card | null;
   turnTotal: number;
   played: number;
+  freeLeft: number | null;
   winners?: number[];
 }

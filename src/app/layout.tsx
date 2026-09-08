@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Manrope } from "next/font/google";
+import { Geist, Outfit } from "next/font/google";
 import PwaSetup from "@/components/PwaSetup";
+import { THEME_BOOT } from "@/lib/appearance";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Outfit({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["600", "700", "800"],
 });
 
-const body = Manrope({
+const body = Geist({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 /**
@@ -56,12 +57,17 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: "cover",
-  themeColor: "#f7f2ea",
+  // the boot script rewrites this when the palette is not the device default
+  themeColor: "#f7f6fb",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
+      <head>
+        {/* before first paint, or the first frame flashes the wrong palette */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <PwaSetup />
         {children}

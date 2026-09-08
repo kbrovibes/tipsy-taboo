@@ -29,10 +29,10 @@ export default function InstallTip() {
   if (!show) return null;
 
   return (
-    <div className="mt-3 flex items-start gap-2 rounded-2xl border-2 border-dashed border-ink/25 bg-white/70 px-3 py-2 text-left">
+    <div className="mt-3 flex items-start gap-2 rounded-2xl bg-white/70 px-3 py-2 text-left shadow-clay">
       <span className="mt-0.5 shrink-0">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <rect x="6" y="2.5" width="12" height="19" rx="2.6" fill="var(--lime)" />
+          <rect x="6" y="2.5" width="12" height="19" rx="2.6" fill="var(--lime)" stroke="var(--ink)" />
           <path d="M10.6 5.4h2.8" />
           <path d="M12 11v6M9 14h6" />
         </svg>

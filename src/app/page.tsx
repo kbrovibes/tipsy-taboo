@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { IconArrowRight, IconCheck, IconHand, IconLogo, IconPhone, IconX, Wordmark } from "@/components/icons";
+import { IconArrowRight, IconCheck, IconLogo, IconPass, IconPhone, Wordmark } from "@/components/icons";
+import AppearanceToggle from "@/components/AppearanceToggle";
 import InstallTip from "@/components/InstallTip";
 import Scoreboard from "@/components/game/Scoreboard";
 import { deckInfo, THEMES, totalCards } from "@/lib/decks";
@@ -44,7 +44,7 @@ export default function Home() {
             <IconLogo size={64} className="sm:hidden" />
             <IconLogo size={88} className="hidden sm:inline-block" />
           </span>
-          <h1 className="mt-2 whitespace-nowrap leading-none" style={{ fontSize: "clamp(2.1rem, 9.5vw, 3.4rem)" }}>
+          <h1 className="mt-3 whitespace-nowrap leading-none" style={{ fontSize: "clamp(2.1rem, 9.5vw, 3.4rem)" }}>
             <Wordmark />
           </h1>
         </a>
@@ -60,10 +60,13 @@ export default function Home() {
             <div className="mt-3">
               <Scoreboard teams={saved.teams} current={saved.turnTeam} />
             </div>
-            <Link href="/play" className="btn-primary mt-4 w-full text-lg">
+            <button onClick={() => router.push("/play")} className="btn-primary mt-4 w-full text-lg">
               Pick up where we left off <IconArrowRight size={20} />
-            </Link>
-            <button onClick={startFresh} className="mt-2 w-full rounded-xl py-2 text-sm font-bold text-ink/50 hover:text-ink">
+            </button>
+            <button
+              onClick={startFresh}
+              className="mt-2 w-full rounded-xl py-2 text-sm font-bold text-ink/50 hover:text-ink"
+            >
               Start a new game instead
             </button>
           </>
@@ -79,29 +82,23 @@ export default function Home() {
         )}
       </div>
 
-      <ul className="mt-5 grid grid-cols-3 gap-2 text-center text-xs text-ink/65">
+      <ul className="mt-5 grid grid-cols-2 gap-2 text-center text-xs text-ink/65">
         <li className="rounded-2xl bg-white/70 px-2 py-3">
           <span className="mx-auto mb-1.5 flex h-9 w-9 items-center justify-center rounded-full bg-go-tint text-go">
             <IconCheck size={20} />
           </span>
-          <b className="block text-ink">Swipe right</b> they got it
-        </li>
-        <li className="rounded-2xl bg-white/70 px-2 py-3">
-          <span className="mx-auto mb-1.5 flex h-9 w-9 items-center justify-center rounded-full bg-fizz text-ink">
-            <IconX size={20} />
-          </span>
-          <b className="block text-ink">Swipe left</b> skip it
+          <b className="block text-ink">Swipe right</b> they got it, +1
         </li>
         <li className="rounded-2xl bg-white/70 px-2 py-3">
           <span className="mx-auto mb-1.5 flex h-9 w-9 items-center justify-center rounded-full bg-buzz-tint text-buzz">
-            <IconHand size={20} />
+            <IconPass size={20} />
           </span>
-          <b className="block text-ink">Tap the hand</b> taboo word said
+          <b className="block text-ink">Swipe left</b> pass, or a banned word slipped
         </li>
       </ul>
 
       {realtimeAvailable && (
-        <form onSubmit={watch} className="mt-5 rounded-2xl bg-white/70 p-3">
+        <form onSubmit={watch} className="mt-4 rounded-2xl bg-white/70 p-3">
           <label className="flex items-center gap-2 text-sm font-bold text-ink/70">
             <IconPhone size={18} /> Referee on a second phone? Enter the code
           </label>
@@ -114,7 +111,8 @@ export default function Home() {
               autoCapitalize="characters"
               autoCorrect="off"
               spellCheck={false}
-              className="min-w-0 flex-1 rounded-xl border-2 border-ink/15 bg-paper px-3 py-2 text-center font-mono text-2xl font-black uppercase tracking-[0.3em] outline-none placeholder:text-ink/20"
+              className="min-w-0 flex-1 rounded-xl bg-paper px-3 py-2 text-center font-mono text-2xl font-black uppercase tracking-[0.3em] outline-none placeholder:text-ink/20"
+              style={{ boxShadow: "inset 0 0 0 1px var(--hair)" }}
             />
             <button disabled={cleanCode(code).length !== 4} className="btn-quiet px-4 disabled:opacity-40" aria-label="Watch">
               <IconArrowRight size={22} />
@@ -127,12 +125,18 @@ export default function Home() {
         {cards.toLocaleString()} cards · 4 difficulties · {THEMES.length - 1} themes · plays offline
       </p>
 
+      <div className="mx-auto mt-3 w-full max-w-[15rem]">
+        <AppearanceToggle />
+      </div>
+
       <InstallTip />
 
-      <p className="mt-8 text-center text-xs text-ink/40">
+      <p className="mt-6 text-center text-xs text-ink/40">
         No accounts · no ads · no cards under the sofa
         <br />
-        <a href="/about.html" className="underline decoration-ink/30 hover:text-ink">about</a>
+        <a href="/about.html" className="underline decoration-ink/30 hover:text-ink">
+          about
+        </a>
         {" · "}
         <a href="https://github.com/kbrovibes/tipsy-taboo" className="underline decoration-ink/30 hover:text-ink" rel="noopener">
           source

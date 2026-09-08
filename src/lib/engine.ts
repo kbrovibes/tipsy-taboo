@@ -70,20 +70,32 @@ export function startTurn(g: Game, now: number): Game {
   };
 }
 
-export function canSkip(g: Game): boolean {
+/** Free passes still in hand this turn; null = unlimited. */
+export function freePassesLeft(g: Game): number | null {
   const lim = g.settings.skipLimit;
-  return lim === null || (g.turn?.skipsUsed ?? 0) < lim;
+  if (lim === null) return null;
+  const used = g.turn?.played.filter((p) => p.outcome === "pass").length ?? 0;
+  return Math.max(0, lim - used);
 }
 
-export function skipsLeft(g: Game): number | null {
-  const lim = g.settings.skipLimit;
-  return lim === null ? null : Math.max(0, lim - (g.turn?.skipsUsed ?? 0));
+/** Which passes in a turn cost a point: everything after the free ones. */
+export function passCosts(played: readonly Played[], free: number | null): boolean[] {
+  let n = 0;
+  return played.map((p) => {
+    if (p.outcome !== "pass") return false;
+    n += 1;
+    return free !== null && n > free;
+  });
 }
 
-/** The card on screen was got / skipped / buzzed; deal the next one. */
+export function turnTotal(played: readonly Played[], free: number | null): number {
+  const costs = passCosts(played, free);
+  return played.reduce((sum, p, i) => sum + (p.outcome === "got" ? 1 : costs[i] ? -1 : 0), 0);
+}
+
+/** The card on screen was got or passed; deal the next one. */
 export function mark(g: Game, card: Card, outcome: Outcome): Game {
   if (g.phase !== "turn" || !g.turn || g.turn.current === null || g.turn.endsAt === null) return g;
-  if (outcome === "skip" && !canSkip(g)) return g;
   const { idx, cursor } = deal(g);
   return {
     ...g,
@@ -92,7 +104,7 @@ export function mark(g: Game, card: Card, outcome: Outcome): Game {
       ...g.turn,
       played: [...g.turn.played, { card, outcome }],
       current: idx,
-      skipsUsed: g.turn.skipsUsed + (outcome === "skip" ? 1 : 0),
+      skipsUsed: g.turn.skipsUsed + (outcome === "pass" ? 1 : 0),
     },
   };
 }
@@ -135,10 +147,6 @@ export function setOutcome(g: Game, i: number, outcome: Outcome): Game {
   return { ...g, turn: { ...g.turn, played } };
 }
 
-export function turnTotal(played: readonly Played[]): number {
-  return played.reduce((n, p) => n + (p.outcome === "got" ? 1 : p.outcome === "buzz" ? -1 : 0), 0);
-}
-
 export function winnerIds(g: Game): number[] {
   const top = Math.max(...g.teams.map((t) => t.score));
   return g.teams.filter((t) => t.score === top).map((t) => t.id);
@@ -147,12 +155,11 @@ export function winnerIds(g: Game): number[] {
 /** Bank the turn, pass the phone. Ends the game when the last round is done. */
 export function finishRecap(g: Game): Game {
   if (g.phase !== "recap" || !g.turn) return g;
-  const total = turnTotal(g.turn.played);
+  const total = turnTotal(g.turn.played, g.settings.skipLimit);
   const teams = g.teams.map((t) =>
     t.id === g.turnTeam ? { ...t, score: t.score + total, turns: t.turns + 1 } : t
   );
-  const lastInRound = g.turnTeam === g.teams.length - 1;
-  const roundDone = lastInRound;
+  const roundDone = g.turnTeam === g.teams.length - 1;
   const next: Game = {
     ...g,
     teams,
@@ -191,10 +198,6 @@ export function rematch(g: Game): Game {
   };
 }
 
-export function isTied(g: Game): boolean {
-  return (g.winners?.length ?? 0) > 1;
-}
-
 export function toSnapshot(g: Game, deck: readonly Card[] | null): Snapshot {
   const cur = g.turn?.current;
   return {
@@ -208,8 +211,9 @@ export function toSnapshot(g: Game, deck: readonly Card[] | null): Snapshot {
     remainingMs: g.turn?.remainingMs ?? 0,
     turnSeconds: g.settings.turnSeconds,
     card: g.phase === "turn" && cur !== null && cur !== undefined && deck ? deck[cur] ?? null : null,
-    turnTotal: g.turn ? turnTotal(g.turn.played) : 0,
+    turnTotal: g.turn ? turnTotal(g.turn.played, g.settings.skipLimit) : 0,
     played: g.turn?.played.length ?? 0,
+    freeLeft: freePassesLeft(g),
     winners: g.winners,
   };
 }

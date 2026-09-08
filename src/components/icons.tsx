@@ -9,7 +9,7 @@ function base({ size = 24, ...rest }: P) {
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
-    strokeWidth: 2.4,
+    strokeWidth: 2.2,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
     "aria-hidden": true,
@@ -29,13 +29,10 @@ export const IconX = (p: P) => (
   </svg>
 );
 
-/** a flat "stop" hand — the referee's buzzer */
-export const IconHand = (p: P) => (
+/** A pass: the card slides away to the left. */
+export const IconPass = (p: P) => (
   <svg {...base(p)}>
-    <path d="M7.5 11.5V5.8a1.5 1.5 0 0 1 3 0v5.2" />
-    <path d="M10.5 10.5V4.3a1.5 1.5 0 0 1 3 0v6.7" />
-    <path d="M13.5 10.6V5.6a1.5 1.5 0 0 1 3 0v7.2" />
-    <path d="M16.5 12.4V8.9a1.5 1.5 0 0 1 3 0v5.4c0 4.3-2.8 7.2-6.8 7.2-2.6 0-4.4-1.1-5.7-3L4.2 14.6a1.6 1.6 0 0 1 2.5-2l.8 1.1" />
+    <path d="M19.5 12h-14M11 6.5 4.5 12l6.5 5.5" />
   </svg>
 );
 
@@ -72,6 +69,26 @@ export const IconVolumeOff = (p: P) => (
   </svg>
 );
 
+export const IconSun = (p: P) => (
+  <svg {...base(p)}>
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4 7 7M17 17l1.6 1.6M5.4 18.6 7 17M17 7l1.6-1.6" />
+  </svg>
+);
+
+export const IconMoon = (p: P) => (
+  <svg {...base(p)}>
+    <path d="M20 14.4A8.4 8.4 0 0 1 9.6 4a8.4 8.4 0 1 0 10.4 10.4Z" />
+  </svg>
+);
+
+export const IconDevice = (p: P) => (
+  <svg {...base(p)}>
+    <rect x="2.6" y="4.4" width="18.8" height="12.4" rx="2.2" />
+    <path d="M8.5 20.6h7" />
+  </svg>
+);
+
 export const IconBack = (p: P) => (
   <svg {...base(p)}>
     <path d="M14.5 5.5 8 12l6.5 6.5" />
@@ -82,15 +99,6 @@ export const IconShare = (p: P) => (
   <svg {...base(p)}>
     <path d="M12 3.5v11M8.2 7.2 12 3.4l3.8 3.8" />
     <path d="M5.5 12.5v6.2a1.8 1.8 0 0 0 1.8 1.8h9.4a1.8 1.8 0 0 0 1.8-1.8v-6.2" />
-  </svg>
-);
-
-export const IconQr = (p: P) => (
-  <svg {...base(p)} strokeWidth={2}>
-    <rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1.2" />
-    <rect x="14" y="3.5" width="6.5" height="6.5" rx="1.2" />
-    <rect x="3.5" y="14" width="6.5" height="6.5" rx="1.2" />
-    <path d="M14 14h2.5v2.5H14zM18 14h2.5M14 20.5h2.5M18 18h2.5v2.5" />
   </svg>
 );
 
@@ -132,28 +140,32 @@ export const IconArrowRight = (p: P) => (
 /** The "no" sign that stands in for the last O of TABOO. */
 export const NoSign = ({ size = 24, ...rest }: P) => (
   <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden {...rest}>
-    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="3.4" />
-    <path d="M5.8 5.8 18.2 18.2" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" />
+    <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="3.2" />
+    <path d="M5.8 5.8 18.2 18.2" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" />
   </svg>
 );
 
-/** App glyph: a speech bubble that has been told to stop. */
+/**
+ * The app mark: a speech bubble with the word redacted out of it. Two bars,
+ * one of them lime, so the shape still reads at 16px in a browser tab.
+ */
 export function IconLogo({ size = 64, className }: { size?: number; className?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" className={className} aria-hidden>
-      <rect width="100" height="100" rx="24" fill="var(--lime, #d2f56f)" />
+      <defs>
+        <linearGradient id="ttg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#7c5cff" />
+          <stop offset="1" stopColor="#4c2ee0" />
+        </linearGradient>
+      </defs>
+      <rect width="100" height="100" rx="26" fill="url(#ttg)" />
       <path
-        d="M22 30c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v20c0 6.6-5.4 12-12 12H45l-13 11v-11h0c-5.5-.5-10-5.7-10-12V30Z"
+        d="M24 34c0-5 4-9 9-9h34c5 0 9 4 9 9v22c0 5-4 9-9 9H49L33 78V65c-5 0-9-4-9-9V34Z"
         fill="#fff"
-        stroke="var(--ink, #2a1b2e)"
-        strokeWidth="4.5"
-        strokeLinejoin="round"
       />
-      <circle cx="38" cy="40" r="4.4" fill="var(--ink, #2a1b2e)" />
-      <circle cx="50" cy="40" r="4.4" fill="var(--ink, #2a1b2e)" />
-      <circle cx="62" cy="40" r="4.4" fill="var(--ink, #2a1b2e)" />
-      <circle cx="70" cy="68" r="15" fill="var(--berry, #b8235a)" stroke="#fff" strokeWidth="4" />
-      <path d="M61.5 59.5 78.5 76.5" stroke="#fff" strokeWidth="5" strokeLinecap="round" />
+      <rect x="33" y="35.5" width="34" height="8.5" rx="4.25" fill="#15121f" />
+      <rect x="33" y="49" width="21" height="8.5" rx="4.25" fill="#15121f" />
+      <rect x="58" y="49" width="9" height="8.5" rx="4.25" fill="#c9f542" />
     </svg>
   );
 }

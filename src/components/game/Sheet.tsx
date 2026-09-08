@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { IconEye, IconShare, IconVolume, IconVolumeOff, IconX } from "@/components/icons";
+import AppearanceToggle from "@/components/AppearanceToggle";
 import { deckInfo } from "@/lib/decks";
 import { encodeQr, qrPath } from "@/lib/qr";
 import { realtimeAvailable } from "@/lib/realtime";
@@ -18,9 +19,10 @@ function QrBlock({ text }: { text: string }) {
   }, [text]);
   if (!qr) return null;
   return (
-    <svg viewBox={`0 0 ${qr.span} ${qr.span}`} className="h-36 w-36 rounded-xl bg-white" shapeRendering="crispEdges" aria-label={`QR code for ${text}`}>
+    /* a camera needs real black on real white, whatever the app theme is */
+    <svg viewBox={`0 0 ${qr.span} ${qr.span}`} className="h-36 w-36 rounded-xl" shapeRendering="crispEdges" aria-label={`QR code for ${text}`}>
       <rect width={qr.span} height={qr.span} fill="#fff" />
-      <path d={qr.d} fill="#2a1b2e" />
+      <path d={qr.d} fill="#000" />
     </svg>
   );
 }
@@ -53,7 +55,7 @@ export default function Sheet({
   const { deck, turnSeconds, rounds, skipLimit } = game.settings;
 
   async function share() {
-    const text = `Referee code ${game.id} — open ${url} to see the card and buzz`;
+    const text = `Referee code ${game.id} — open ${url} to see the card and call taboo words`;
     try {
       if (canShare) await navigator.share({ text });
       else await navigator.clipboard.writeText(text);
@@ -73,13 +75,18 @@ export default function Sheet({
             </button>
           </div>
 
+          <div className="mt-4 rounded-2xl bg-white px-4 py-3 shadow-clay">
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-ink/50">Appearance</p>
+            <AppearanceToggle />
+          </div>
+
           <button
             onClick={() => onMute(!muted)}
-            className="mt-4 flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3 text-left shadow-clay"
+            className="mt-3 flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3 text-left shadow-clay"
           >
             <span className="text-ink/70">{muted ? <IconVolumeOff size={22} /> : <IconVolume size={22} />}</span>
             <span className="flex-1 font-bold">Sound</span>
-            <span className={`rounded-full px-3 py-1 text-xs font-extrabold ${muted ? "bg-well text-ink/60" : "bg-lime text-ink"}`}>
+            <span className="rounded-full px-3 py-1 text-xs font-extrabold" style={{ background: muted ? "var(--well)" : "var(--lime)", color: muted ? "var(--muted)" : "var(--on-lime)" }}>
               {muted ? "off" : "on"}
             </span>
           </button>
@@ -96,7 +103,7 @@ export default function Sheet({
                 )}
               </div>
               <p className="mt-1 text-xs text-ink/60">
-                The other team can see the card and buzz from their own phone — no more leaning over shoulders. Open the app on another phone and type this code.
+                The other team can see the card and call a taboo word from their own phone — no more leaning over shoulders. Open the app on another phone and type this code.
               </p>
               <div className="mt-3 flex items-center gap-4">
                 <QrBlock text={url} />
@@ -113,7 +120,7 @@ export default function Sheet({
 
           <p className="mt-3 rounded-2xl bg-white/70 px-4 py-2 text-xs text-ink/60">
             {deckInfo(deck).emoji} {deckInfo(deck).label} · {turnSeconds}s turns · {rounds ? `${rounds} rounds` : "endless"} ·{" "}
-            {skipLimit === null ? "unlimited skips" : skipLimit === 0 ? "no skips" : `${skipLimit} skips`}
+            {skipLimit === null ? "free passes" : skipLimit === 0 ? "every pass costs a point" : `${skipLimit} free passes`}
           </p>
 
           <div className="mt-4 flex gap-2">

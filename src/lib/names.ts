@@ -50,11 +50,23 @@ export function cleanCode(raw: string): string {
   return (m ? m[1] : raw).toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 4);
 }
 
-export const TEAM_COLORS: TeamColor[] = ["berry", "ocean", "lime", "tangerine"];
+export const TEAM_COLORS: TeamColor[] = ["grape", "teal", "amber", "pink"];
 
+/**
+ * Team colours point at CSS variables, not literals, so the dark palette in
+ * globals.css swaps them without any component knowing which theme is on.
+ */
 export const TEAM_STYLE: Record<TeamColor, { label: string; color: string; tint: string; deep: string }> = {
-  berry: { label: "Berry", color: "#d63d7a", tint: "#ffdce9", deep: "#9c1f52" },
-  ocean: { label: "Ocean", color: "#2f6fe0", tint: "#dbe7ff", deep: "#1d4fb0" },
-  lime: { label: "Lime", color: "#4f8c0f", tint: "#e5f5c7", deep: "#3a6a08" },
-  tangerine: { label: "Tangerine", color: "#e0761a", tint: "#ffe6cc", deep: "#b2560c" },
+  grape: { label: "Grape", color: "var(--t-grape)", tint: "var(--t-grape-tint)", deep: "var(--t-grape-deep)" },
+  teal: { label: "Teal", color: "var(--t-teal)", tint: "var(--t-teal-tint)", deep: "var(--t-teal-deep)" },
+  amber: { label: "Amber", color: "var(--t-amber)", tint: "var(--t-amber-tint)", deep: "var(--t-amber-deep)" },
+  pink: { label: "Pink", color: "var(--t-pink)", tint: "var(--t-pink-tint)", deep: "var(--t-pink-deep)" },
+};
+
+/** Confetti and other canvases need real values, not variables. */
+export const TEAM_HEX: Record<TeamColor, string> = {
+  grape: "#5b3df5",
+  teal: "#0d9488",
+  amber: "#d97706",
+  pink: "#db2777",
 };

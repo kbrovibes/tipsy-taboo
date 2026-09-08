@@ -17,22 +17,28 @@ cards under the sofa.
 
 1. **Set up.** Two to four teams with goofy auto-names (editable), a deck, and
    the house rules: 60 / 90 / 120 second turns, 3 / 5 / 8 / endless rounds,
-   0 / 3 / unlimited skips per turn. Last night's rules are remembered.
+   none / 3 / unlimited free passes per turn. Last night's rules are remembered.
 2. **Pass the phone.** The handoff screen doubles as the scoreboard. The team
    picks a clue-giver, taps *Start the clock*, and gets a 3‑2‑1.
 3. **Play the card.** The word sits on top, the five banned words underneath.
-   Three ways off the screen and none of them have a label:
-   - **swipe right** or tap the green circle — they said it, **+1**
-   - **swipe left** or tap the amber circle — skip, **0** (counted against the
-     skip limit)
-   - **tap the red hand** — a banned word slipped out, **−1**. That button
-     belongs to the other team, who watch the card over the clue-giver's
-     shoulder, or from their own phone (see the referee link below).
+   Two ways off the screen:
+   - **swipe right**, or the green button — they said it, **+1**
+   - **swipe left**, or the left button — **pass**
+
+   Passing is one action because at the table it is one moment: whether you are
+   stuck or a banned word just slipped out, the card is dead and you want the
+   next one *now*. The house rule sets how many passes are free per turn
+   (default three). While free ones remain the button is neutral and reads
+   `Pass · 3 free`; once they run out it turns red, reads `Pass · −1`, and every
+   further pass costs a point. The other team polices the banned words, from
+   over the clue-giver's shoulder or from their own phone (see below).
+
    Sound and haptics on every action, ticks for the last five seconds, a horn
-   at time-up. Arrow keys and `B` do the same on a laptop.
-4. **Bank it.** Time's up shows every card from the turn with its outcome. Tap
-   an icon to fix a fat-fingered swipe, then bank the points. The card that
-   was on screen when the clock ran out goes back on top of the deck.
+   at time-up. Arrow keys do the same on a laptop.
+4. **Bank it.** Time's up shows every card from the turn with its outcome, and
+   marks the passes that ran past the free ones with a −1. Tap an icon to fix a
+   fat-fingered swipe, then bank the points. The card that was on screen when
+   the clock ran out goes back on top of the deck.
 5. **Win.** Every team plays once per round; after the last round the top
    score wins, and a tie adds a round. Confetti, standings, rematch.
 
@@ -40,12 +46,19 @@ The game is saved to the phone on every change, so a locked screen, a refresh
 or a dead battery mid-turn costs nothing: open the app and pick up where you
 left off. The screen stays awake while the clock runs.
 
+**Light, dark or auto.** Auto is the default and follows the phone, so the app
+is dark when the phone is. The choice lives under the ⚙ menu and on the home
+screen, and an inline script applies it before the first paint so there is no
+flash of the wrong palette.
+
 ### The referee link
 
 Under the ⚙ menu is a four-letter code and a QR. A second phone opens
-`/watch`, types the code, and sees the live card with a very large **BUZZ**
-button — so the opposing team can police the banned words without leaning
-over anybody. It is a Supabase Realtime broadcast channel and nothing else:
+`/watch`, types the code, and sees the live card with a very large **TABOO!**
+button — so the opposing team can police the banned words without leaning over
+anybody. Pressing it passes the card on the host's phone, exactly as if they
+had swiped it left themselves. It is a Supabase Realtime broadcast channel and
+nothing else:
 the host phone publishes a snapshot after every change, watchers send buzzes
 back, nothing is stored. Without the two public env vars the feature is simply
 not offered and the game plays on exactly as before.
@@ -85,8 +98,8 @@ empty.
 | | |
 |---|---|
 | Framework | Next.js 16 (App Router), React 19, TypeScript |
-| Styling | Tailwind CSS v4 (CSS-first, `@theme` in `globals.css`) |
-| Type | Bricolage Grotesque + Manrope via `next/font` |
+| Styling | Tailwind CSS v4 (CSS-first, `@theme` in `globals.css`); one token set per palette, light and dark |
+| Type | Outfit + Geist via `next/font` |
 | State | One `Game` object in `localStorage`; a pure engine in `lib/engine.ts` |
 | Referee link | Supabase Realtime broadcast (no tables, no rows) |
 | PWA | Web manifest + a service worker that caches the shell and the deck chunks, so it plays offline |
@@ -100,7 +113,7 @@ src/
     page.tsx                 home: new game / resume / referee code
     play/page.tsx            the game (client-side state machine)
     watch/[code]/page.tsx    the referee's phone
-    globals.css              the theme (linen / ink / berry / lime)
+    globals.css              the two palettes (light + dark) and every token
     manifest.ts              PWA manifest
   components/
     game/Game.tsx            the loop: load, persist, publish, route by phase
@@ -109,7 +122,8 @@ src/
     game/Turn.tsx            the card, the swipe, the clock, the buzzer
     game/Recap.tsx           time's up, fix mis-swipes, bank
     game/Over.tsx            results and confetti
-    game/Sheet.tsx           menu: sound, referee code + QR, end game
+    game/Sheet.tsx           menu: appearance, sound, referee code + QR, end game
+    AppearanceToggle.tsx     light / auto / dark
     Watch.tsx                referee view
     icons.tsx                hand-drawn glyphs and the wordmark
   lib/
@@ -119,6 +133,7 @@ src/
     storage.ts               game, settings, mute, used-card memory
     sound.ts                 WebAudio synth and haptics
     shell.ts                 visible-height, edge-swipe guard, wake lock
+    appearance.ts            light / dark / system, and the pre-paint script
     qr.ts                    QR encoder (no CDN)
   data/                      generated decks + meta.json (do not edit by hand)
 data/

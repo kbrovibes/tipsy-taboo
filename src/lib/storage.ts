@@ -19,9 +19,19 @@ function write(key: string, value: unknown): void {
   } catch {}
 }
 
+const COLOR_MIGRATION: Record<string, string> = { berry: "grape", ocean: "teal", lime: "amber", tangerine: "pink" };
+
 export function loadGame(): Game | null {
   const g = read<Game>(GAME_KEY);
-  return g && Array.isArray(g.teams) && g.settings ? g : null;
+  if (!g || !Array.isArray(g.teams) || !g.settings) return null;
+  // games saved before pass and buzz were folded into one action
+  return {
+    ...g,
+    teams: g.teams.map((t) => ({ ...t, color: (COLOR_MIGRATION[t.color] ?? t.color) as Game["teams"][number]["color"] })),
+    turn: g.turn
+      ? { ...g.turn, played: g.turn.played.map((p) => ({ ...p, outcome: p.outcome === "got" ? "got" : "pass" })) }
+      : g.turn,
+  };
 }
 
 export function saveGame(g: Game | null): void {

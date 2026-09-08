@@ -5,7 +5,7 @@
 // game plays from cache. Hashed /_next/static files are immutable, so they are
 // cache-first forever; pages are network-first with the cached copy as the
 // offline fallback.
-const VERSION = "tt-v1";
+const VERSION = "tt-v2";
 const SHELL = ["/", "/play", "/watch"];
 
 self.addEventListener("install", (e) => {

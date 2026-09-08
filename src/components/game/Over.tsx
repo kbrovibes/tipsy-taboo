@@ -6,7 +6,7 @@ import { TEAM_STYLE } from "@/lib/names";
 import { sfx } from "@/lib/sound";
 import type { Game } from "@/lib/types";
 
-const CONFETTI = ["#b8235a", "#d2f56f", "#ffcf5c", "#2f6fe0", "#ff4d8d", "#1a7f4f"];
+const CONFETTI = ["#5b3df5", "#c9f542", "#fbbf24", "#0d9488", "#db2777", "#7c5cff"];
 
 export default function Over({
   game,

@@ -57,8 +57,8 @@ export default function Setup({
   useEffect(() => {
     const a = goofyTeamName();
     setTeams([
-      { name: a, color: "berry" },
-      { name: goofyTeamName([a]), color: "ocean" },
+      { name: a, color: "grape" },
+      { name: goofyTeamName([a]), color: "teal" },
     ]);
   }, []);
 
@@ -71,7 +71,7 @@ export default function Setup({
 
   function addTeam() {
     if (teams.length >= 4) return;
-    const color = TEAM_COLORS.find((c) => !teams.some((t) => t.color === c)) ?? "lime";
+    const color = TEAM_COLORS.find((c) => !teams.some((t) => t.color === c)) ?? "amber";
     setTeams([...teams, { name: goofyTeamName(teams.map((t) => t.name)), color }]);
   }
 
@@ -153,7 +153,8 @@ export default function Setup({
           <button
             type="button"
             onClick={addTeam}
-            className="mt-2 w-full rounded-2xl border-2 border-dashed border-ink/25 py-2 text-sm font-bold text-ink/55 hover:text-ink"
+            className="mt-2 w-full rounded-2xl py-2 text-sm font-bold text-ink/55 hover:text-ink"
+            style={{ boxShadow: "inset 0 0 0 2px var(--hair)" }}
           >
             + Add a team
           </button>
@@ -171,12 +172,13 @@ export default function Setup({
                 key={d.key}
                 type="button"
                 onClick={() => set("deck", d.key)}
-                className={`rounded-2xl px-3 py-3 text-left transition-all ${on ? "bg-lime shadow-clay ring-2 ring-ink" : "bg-well hover:bg-lime/40"}`}
+                className={`rounded-2xl px-3 py-3 text-left transition-all ${on ? "shadow-clay" : "bg-well"}`}
+                style={on ? { background: "var(--lime)", color: "var(--on-lime)", boxShadow: "var(--lift), 0 0 0 2px var(--ink)" } : undefined}
               >
                 <span className="text-xl" aria-hidden>{d.emoji}</span>
                 <span className="mt-1 block font-display text-base font-extrabold">{d.label}</span>
-                <span className="block text-xs text-ink/60">{d.blurb}</span>
-                <span className="mt-1 block text-[11px] font-bold text-ink/45">{deckCount(d.key).toLocaleString()} cards</span>
+                <span className="block text-xs opacity-75">{d.blurb}</span>
+                <span className="mt-1 block text-[11px] font-bold opacity-70">{deckCount(d.key).toLocaleString()} cards</span>
               </button>
             );
           })}
@@ -194,7 +196,8 @@ export default function Setup({
                 key={t.key}
                 type="button"
                 onClick={() => set("deck", t.key as DeckKey)}
-                className={`rounded-xl px-1.5 py-2 text-center transition-all ${on ? "bg-lime shadow-clay ring-2 ring-ink" : "bg-well hover:bg-lime/40"}`}
+                className={`rounded-xl px-1.5 py-2 text-center transition-all ${on ? "shadow-clay" : "bg-well"}`}
+                style={on ? { background: "var(--lime)", color: "var(--on-lime)", boxShadow: "var(--lift), 0 0 0 2px var(--ink)" } : undefined}
               >
                 <span className="text-lg" aria-hidden>{t.emoji}</span>
                 <span className="block text-[11px] font-extrabold leading-tight">{t.label}</span>
@@ -228,7 +231,7 @@ export default function Setup({
             onChange={(v) => set("rounds", v)}
           />
         </div>
-        <label className="mt-3 block text-xs font-bold uppercase tracking-wider text-ink/50">Skips per turn</label>
+        <label className="mt-3 block text-xs font-bold uppercase tracking-wider text-ink/50">Free passes per turn</label>
         <div className="mt-1.5">
           <Seg
             options={[{ v: 0, label: "None" }, { v: 3, label: "3" }, { v: null, label: "∞" }]}
@@ -237,7 +240,7 @@ export default function Setup({
           />
         </div>
         <p className="mt-3 text-xs text-ink/55">
-          Got it +1 · skipped 0 · taboo word said −1. Every team plays once per round; a tie at the end adds a round.
+          Got it +1. A pass — giving up, or a taboo word slipping out — is free until the free ones run out, then each costs a point. Every team plays once per round; a tie at the end adds a round.
         </p>
       </section>
 
