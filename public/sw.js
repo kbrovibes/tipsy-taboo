@@ -27,6 +27,8 @@ self.addEventListener("activate", (e) => {
 });
 
 self.addEventListener("fetch", (e) => {
+  // dev chunks are not content-hashed, so never cache on localhost
+  if (self.location.hostname === "localhost") return;
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);

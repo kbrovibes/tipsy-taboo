@@ -54,12 +54,12 @@ not offered and the game plays on exactly as before.
 
 | Deck | Cards | Who it is for |
 |---|---:|---|
-| 🧸 Kids | 1,000+ | 6–9 year olds: animals, snacks, cartoons. Simple banned words, a couple of easy routes left open. |
-| 🍹 Medium | 1,000+ | The classic party pack: everyday words everybody knows. |
-| 🌶️ Hard | 1,000+ | The most-played level: idioms, feelings, verbs, general knowledge. Every obvious route closed. |
-| 💀 Insane | 1,000+ | Named effects, jargon, deep cuts, multi-word ideas. Brutal but still guessable. |
+| 🧸 Kids | 1,102 | 6–9 year olds: animals, snacks, cartoons. Simple banned words, a couple of easy routes left open. |
+| 🍹 Medium | 1,041 | The classic party pack: everyday words everybody knows. |
+| 🌶️ Hard | 1,021 | The most-played level: idioms, feelings, verbs, general knowledge. Every obvious route closed. |
+| 💀 Insane | 1,072 | Named effects, jargon, deep cuts, multi-word ideas. Brutal but still guessable. |
 
-Plus eight themed packs of ~240 cards each, played at medium difficulty, aimed
+Plus eight themed packs (2,044 cards between them, 240–350 each), played at medium difficulty, aimed
 at the people this app is actually played by — Indian friends abroad in their
 thirties and forties: **Bollywood, Malayalam Movies, Famous Indians, Places in
 India, Desi Life, Cricket, 90s India, Movies (world)** — and *The Big Mix*,
